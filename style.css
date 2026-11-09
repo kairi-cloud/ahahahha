@@ -18,7 +18,7 @@ body {
 .top-nav {
     padding: 20px 40px;
     display: flex;
-    justify-content: flex-start; /* Меню слева */
+    justify-content: center; /* <-- ВОТ ЭТА СТРОЧКА (было flex-start) */
 }
 
 .nav-pill {
