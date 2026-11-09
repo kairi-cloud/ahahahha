@@ -21,7 +21,6 @@
         }
         .floating-cat {
             animation: float 3s ease-in-out infinite;
-            /* Убираем белый фон у статичной картинки, если он есть */
             mix-blend-mode: multiply; 
         }
 
@@ -41,7 +40,6 @@
                 background-size: 60% !important; 
             }
 
-            /* Перенос кота вниз на телефонах */
             #about-section {
                 flex-direction: column !important;
                 text-align: center;
@@ -63,6 +61,11 @@
     </style>
 </head>
 <body>
+
+    <!-- НЕВИДИМЫЙ АУДИОПЛЕЕР -->
+    <audio id="bg-music" loop autoplay style="display: none;">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- Верхнее меню -->
     <header class="top-nav">
@@ -131,7 +134,6 @@
     <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ) -->
     <section id="about-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; gap: 20px;">
         
-        <!-- Левая часть: Текст и плашки -->
         <div style="flex: 1; max-width: 55%; display: flex; flex-direction: column; align-items: flex-start;">
             <h2 style="color: #fff; font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; display: flex; align-items: center; gap: 15px;">
                 <span style="display: inline-block; width: 8px; height: 35px; background-color: #ccff00;"></span>
@@ -154,9 +156,7 @@
             </div>
         </div>
 
-        <!-- Правая часть: Картинка с котиком (теперь cat.png) -->
         <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; max-width: 45%;">
-            <!-- ВАЖНО: Теперь ищем cat.png, а не cat.gif -->
             <img src="cat.png" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
         </div>
 
@@ -233,12 +233,25 @@
         </p>
     </section>
 
-    <!-- СКРИПТ -->
+    <!-- СКРИПТЫ -->
     <script>
+        // 1. Скрипт для кнопки регистрации
         document.getElementById('btn-main').addEventListener('click', function(e) {
             window.open('https://tally.so/r/4aBl7b', '_blank');
+        });
+
+        // 2. Скрипт для музыки (обход блокировки автоплея)
+        const audio = document.getElementById('bg-music');
+        
+        // Пытаемся включить сразу
+        audio.play().catch(function() {
+            // Если браузер заблокировал, включаем при первом клике по экрану
+            document.body.addEventListener('click', function() {
+                audio.play();
+            }, { once: true }); // Сработает только один раз
         });
     </script>
 
 </body>
+</html>
 </html>
