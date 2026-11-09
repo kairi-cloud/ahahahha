@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 30px 0;
-    position: absolute; /* Накладываем поверх фона */
+    position: absolute; 
     top: 0;
     z-index: 100;
 }
@@ -45,32 +45,27 @@ body {
 .nav-pill a:hover {
     transform: scale(1.05);
 }
-.btn-yellow {
-    position: relative;
-    z-index: 9999;
-}
+
 /* =========================================
    ГЛАВНЫЙ БЛОК (HERO С ФОНОМ)
    ========================================= */
 .hero {
-    /* Ставим вашу картинку на фон */
-    /* ВАЖНО: Загрузите картинку на GitHub и назовите её bg.png (или поменяйте имя тут) */
     background-image: url('bg.png'); 
-    background-size: cover; /* Растягиваем на весь экран */
+    background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #000; /* Черный фон на случай, если картинка не загрузится */
+    background-color: #000; 
     
-    min-height: 100vh; /* Блок на весь экран */
+    min-height: 100vh; 
     display: flex;
-    align-items: center; /* Текст по центру по вертикали */
-    padding: 150px 40px 50px 40px; /* Отступ сверху для меню */
+    align-items: center; 
+    padding: 150px 40px 50px 40px; 
     position: relative;
 }
 
 .hero-container {
     display: flex;
-    justify-content: flex-start; /* Текст прижат влево */
+    justify-content: flex-start; 
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
@@ -118,6 +113,12 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 0 25px rgba(204, 255, 0, 0.4); 
+    
+    /* Эти свойства спасают кнопку от перекрытия */
+    position: relative;
+    z-index: 9999;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .btn-yellow:hover {
@@ -125,7 +126,7 @@ h1 {
     box-shadow: 0 0 40px rgba(204, 255, 0, 0.8); 
 }
 
-/* Пустая правая колонка, чтобы текст не растягивался на весь экран */
+/* Пустая правая колонка */
 .hero-image {
     flex: 1;
 }
@@ -159,11 +160,12 @@ h1 {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
-   /* =========================================
+
+/* =========================================
    БЛОК: КАК УЧАСТВОВАТЬ
    ========================================= */
 .how-to-participate {
-    background-color: #9b30ff; /* Фиолетовый фон, как на скриншоте */
+    background-color: #9b30ff; 
     padding: 60px 5%;
     color: #fff;
 }
@@ -173,7 +175,6 @@ h1 {
     font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 30px;
-    /* Добавим бирюзовое подчеркивание, как на макете */
     border-bottom: 3px solid #00ffff; 
     display: inline-block;
     padding-bottom: 5px;
@@ -182,24 +183,20 @@ h1 {
 .steps-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Расстояние между плашками */
-    align-items: flex-start; /* Плашки прижаты влево */
+    gap: 15px; 
+    align-items: flex-start; 
 }
 
 /* Желтые плашки */
 .step-pill {
-    background-color: #ccff00; /* Ярко-желтый/салатовый */
+    background-color: #ccff00; 
     color: #000;
     font-size: 24px;
     font-weight: 900;
     text-transform: uppercase;
     padding: 15px 30px;
-    border-radius: 40px; /* Сильное скругление */
-    
-    /* Чтобы плашка была по ширине текста, а не на весь экран */
+    border-radius: 40px; 
     display: inline-block; 
-    
-    /* Эффект при наведении (по желанию) */
     transition: transform 0.2s;
 }
 
@@ -207,23 +204,12 @@ h1 {
     transform: scale(1.02);
 }
 
-/* Цифры внутри плашек */
 .step-num {
     margin-right: 10px;
 }
 
-/* Адаптив для мобильных телефонов */
-@media (max-width: 768px) {
-    .how-to-participate h2 {
-        font-size: 24px;
-    }
-    .step-pill {
-        font-size: 16px; /* Уменьшаем шрифт на телефонах */
-        padding: 12px 20px;
-        white-space: normal; /* Разрешаем тексту переноситься на новую строку */
-    }
-}
-   БЛОК НАШИ ПРАВИЛА
+/* =========================================
+   БЛОК НАШИ ПРАВИЛА (ИСПРАВЛЕНО)
    ========================================= */
 .rules {
     background-color: #e0e0e0;
@@ -282,13 +268,6 @@ h1 {
         margin-top: 40px;
         height: 400px;
         width: 100%;
-    }
-    .bg-circle-character {
-        width: 350px;
-        height: 350px;
-    }
-    .cat-img {
-        max-height: 420px;
     }
     
     .top-nav {
