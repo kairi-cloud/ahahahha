@@ -21,11 +21,10 @@
         }
         .floating-cat {
             animation: float 3s ease-in-out infinite;
+            /* Убираем белый фон у статичной картинки, если он есть */
+            mix-blend-mode: multiply; 
         }
 
-        /* =========================================
-           АДАПТИВ ДЛЯ БЛОКА С КОТОМ (ТЕЛЕФОНЫ)
-           ========================================= */
         @media (max-width: 900px) {
             .top-nav { padding: 15px 10px !important; }
             .nav-pill {
@@ -42,26 +41,20 @@
                 background-size: 60% !important; 
             }
 
-            /* ВОТ ТУТ МЫ ДЕЛАЕМ ТАК, ЧТОБЫ КОТ ПЕРЕНОСИЛСЯ ВНИЗ */
+            /* Перенос кота вниз на телефонах */
             #about-section {
-                flex-direction: column !important; /* Ставим элементы друг под другом */
+                flex-direction: column !important;
                 text-align: center;
                 gap: 40px !important;
                 padding: 40px 5% !important;
             }
-
-            /* Текст и плашки на телефоне становятся по центру */
             #about-section > div:first-child {
                 max-width: 100% !important;
                 align-items: center !important;
             }
-            
-            /* Плашки на телефоне тоже центрируем */
             #about-section .steps-container {
                 align-items: center !important;
             }
-
-            /* Кот на телефоне занимает всю ширину и стоит по центру */
             #about-section > div:last-child {
                 max-width: 100% !important;
                 justify-content: center !important;
@@ -136,7 +129,6 @@
     </div>
 
     <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ) -->
-    <!-- Убрал flex-wrap: wrap, чтобы они не переносились вниз, и уменьшил размеры плашек -->
     <section id="about-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; gap: 20px;">
         
         <!-- Левая часть: Текст и плашки -->
@@ -162,9 +154,10 @@
             </div>
         </div>
 
-        <!-- Правая часть: Гифка с котиком -->
+        <!-- Правая часть: Картинка с котиком (теперь cat.png) -->
         <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; max-width: 45%;">
-            <img src="cat.gif" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px; border-radius: 20px;">
+            <!-- ВАЖНО: Теперь ищем cat.png, а не cat.gif -->
+            <img src="cat.png" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
         </div>
 
     </section>
