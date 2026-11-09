@@ -9,7 +9,7 @@
 body {
     background-color: #000;
     color: #fff;
-    overflow-x: hidden; /* Запрещаем горизонтальный скролл из-за бегущих строк */
+    overflow-x: hidden; 
 }
 
 /* =========================================
@@ -18,7 +18,7 @@ body {
 .top-nav {
     padding: 20px 40px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Меню слева */
 }
 
 .nav-pill {
@@ -34,11 +34,7 @@ body {
     color: #000;
     font-size: 14px;
     font-weight: 800;
-    transition: opacity 0.2s;
-}
-
-.nav-pill a:hover {
-    opacity: 0.6;
+    text-transform: uppercase;
 }
 
 /* =========================================
@@ -56,24 +52,24 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px; /* Сделал шире для большого кота */
     margin: 0 auto;
 }
 
-/* Левая колонка (Текст) */
+/* Левая колонка (Текст) - выравнивание влево */
 .hero-content {
     flex: 1;
-    max-width: 500px;
+    max-width: 550px;
     z-index: 2;
+    text-align: left; /* Текст строго слева */
 }
 
 h1 {
-    font-size: 52px;
+    font-size: 55px;
     font-weight: 900;
     line-height: 1.05;
     text-transform: uppercase;
     margin-bottom: 20px;
-    letter-spacing: -1px;
 }
 
 .purple { color: #9b30ff; }
@@ -99,12 +95,11 @@ h1 {
     font-weight: 900;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
 }
 
 .btn-yellow:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(204, 255, 0, 0.4);
 }
 
 /* Правая колонка (Картинка и Круг) */
@@ -114,7 +109,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 500px;
+    height: 600px; /* Высота под большой круг */
     z-index: 1;
 }
 
@@ -124,20 +119,44 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 480px;
-    height: 480px;
+    width: 550px; /* Сделал круг больше */
+    height: 550px;
     background-color: #ccff00;
     border-radius: 50%;
-    z-index: -1; /* Уходит за спину кота */
+    z-index: -1; /* Прячем за кота */
 }
 
 /* Картинка кота */
 .cat-img {
-    max-height: 520px;
+    max-height: 650px; /* Кот теперь большой */
     width: auto;
     object-fit: contain;
     position: relative;
     z-index: 2;
+    margin-bottom: -50px; /* Немного опускаем вниз, как на макете */
+}
+
+/* =========================================
+   АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ)
+   ========================================= */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column;
+    }
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .desc-box p { text-align: center; }
+    .hero-image {
+        margin-top: 40px;
+        height: 400px;
+    }
+    .bg-circle-character { width: 300px; height: 300px; }
+    .cat-img { max-height: 400px; }
 }
 
 /* =========================================
