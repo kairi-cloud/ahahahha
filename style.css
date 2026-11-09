@@ -47,52 +47,30 @@ body {
 }
 
 /* =========================================
-   ГЛАВНЫЙ БЛОК (HERO)
+   ГЛАВНЫЙ БЛОК (HERO С ФОНОМ)
    ========================================= */
 .hero {
-    padding: 150px 40px 0 40px; /* Отступ сверху для меню */
-    display: flex;
-    align-items: center;
-    min-height: 100vh; /* Блок на весь экран */
-    position: relative;
-    overflow: hidden; 
-}
-
-/* Рваные фиолетовые всполохи на фоне */
-.bg-splashes {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    /* Здесь мы имитируем рваные полосы с помощью радиальных градиентов и свечения */
-    background: 
-        radial-gradient(ellipse at 80% 30%, rgba(155, 48, 255, 0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at 20% 80%, rgba(155, 48, 255, 0.2) 0%, transparent 50%),
-        linear-gradient(135deg, transparent 40%, rgba(155, 48, 255, 0.1) 45%, rgba(155, 48, 255, 0.3) 50%, transparent 55%);
-    pointer-events: none;
-}
-
-/* Если у вас есть картинка с рваными полосами (как на макете), 
-   раскомментируйте код ниже и залейте файл bg.png */
-/*
-.bg-splashes {
-    background-image: url('bg.png');
-    background-size: cover;
+    /* Ставим вашу картинку на фон */
+    /* ВАЖНО: Загрузите картинку на GitHub и назовите её bg.png (или поменяйте имя тут) */
+    background-image: url('bg.png'); 
+    background-size: cover; /* Растягиваем на весь экран */
     background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000; /* Черный фон на случай, если картинка не загрузится */
+    
+    min-height: 100vh; /* Блок на весь экран */
+    display: flex;
+    align-items: center; /* Текст по центру по вертикали */
+    padding: 150px 40px 50px 40px; /* Отступ сверху для меню */
+    position: relative;
 }
-*/
 
 .hero-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center; 
+    justify-content: flex-start; /* Текст прижат влево */
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2; 
 }
 
 /* Левая колонка (Текст) */
@@ -100,10 +78,11 @@ body {
     flex: 1;
     max-width: 600px;
     text-align: left;
+    z-index: 2;
 }
 
 h1 {
-    font-size: 65px; /* Сделали шрифт крупнее */
+    font-size: 65px;
     font-weight: 900;
     line-height: 1.05;
     text-transform: uppercase;
@@ -119,12 +98,12 @@ h1 {
 
 .desc-box p {
     color: #ccc;
-    font-size: 16px; /* Чуть увеличили текст описания */
+    font-size: 16px;
     line-height: 1.5;
     max-width: 480px;
 }
 
-/* Кнопка с ярким свечением */
+/* Кнопка */
 .btn-yellow {
     background-color: #ccff00;
     color: #000;
@@ -135,40 +114,17 @@ h1 {
     font-size: 18px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 25px rgba(204, 255, 0, 0.4); /* Неоновое свечение */
+    box-shadow: 0 0 25px rgba(204, 255, 0, 0.4); 
 }
 
 .btn-yellow:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(204, 255, 0, 0.8); /* Усиление свечения */
+    box-shadow: 0 0 40px rgba(204, 255, 0, 0.8); 
 }
 
-/* Правая колонка (Картинка) */
+/* Пустая правая колонка, чтобы текст не растягивался на весь экран */
 .hero-image {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-/* Монстр с фиолетовым свечением */
-.monstr-img {
-    max-height: 600px;
-    width: auto;
-    object-fit: contain;
-    position: relative;
-    z-index: 3;
-    /* Мощное фиолетовое свечение вокруг монстра, как на макете */
-    filter: drop-shadow(0px 0px 40px rgba(155, 48, 255, 0.8));
-    animation: float 4s ease-in-out infinite; /* Легкая анимация парения */
-}
-
-/* Анимация парения монстра */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
 }
 
 /* =========================================
@@ -207,104 +163,15 @@ h1 {
 @media (max-width: 1000px) {
     .hero {
         padding: 120px 20px 40px 20px;
-        height: auto;
-    }
-    .hero-container {
-        flex-direction: column-reverse; /* Монстр сверху на телефонах */
-        text-align: center;
+        background-position: 70% center; /* Сдвигаем фон, чтобы монстр был виден */
     }
     .hero-content {
         max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        background: rgba(0, 0, 0, 0.6); /* Затемняем фон под текстом для читаемости */
+        padding: 20px;
+        border-radius: 20px;
     }
     h1 { font-size: 45px; }
-    .desc-box p { text-align: center; }
-    .hero-image {
-        margin-bottom: 30px;
-    }
-    .monstr-img { 
-        max-height: 350px; 
-    }
-}
-/* =========================================
-   БЕГУЩИЕ СТРОКИ (MARQUEE)
-   ========================================= */
-.marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 15px 0;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 10;
-}
-
-.marquee-content {
-    display: inline-flex;
-    animation: marquee 15s linear infinite;
-    font-weight: 900;
-    font-size: 20px;
-    text-transform: uppercase;
-}
-
-.marquee-content.reverse {
-    animation-direction: reverse;
-}
-
-.marquee-content span {
-    margin: 0 20px;
-}
-
-.marquee-content .dot {
-    font-size: 16px;
-}
-
-/* Фиолетовая строка */
-.marquee-purple {
-    background-color: #9b30ff;
-    border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
-}
-.marquee-purple span { color: #000; }
-
-/* Черная строка */
-.marquee-black {
-    background-color: #000;
-    border-top: 2px solid #9b30ff;
-    border-bottom: 2px solid #9b30ff;
-}
-.marquee-black span { color: #9b30ff; }
-.marquee-black .dot { color: #ccff00; }
-
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* =========================================
-   БЛОК О ТУРНИРЕ
-   ========================================= */
-.about {
-    background-color: #9b30ff;
-    padding: 40px 5%;
-    color: #fff;
-}
-
-.about h2 {
-    font-size: 28px;
-    font-weight: 900;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
-
-.about .fake-text {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    line-height: 1.5;
-    text-transform: uppercase;
 }
 
 /* =========================================
