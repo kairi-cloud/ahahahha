@@ -25,7 +25,6 @@
             }
             .nav-pill a { font-size: 12px !important; letter-spacing: 0 !important; }
             
-            /* На телефонах делаем картинку еще меньше и сдвигаем вправо */
             .hero {
                 background-position: 90% center !important;
                 background-size: 60% !important; 
@@ -38,9 +37,12 @@
     <!-- Верхнее меню -->
     <header class="top-nav">
         <div class="nav-pill" style="background-color: #9b30ff !important;">
-            <!-- ВОТ ТУТ ССЫЛКА НА БЛОК ПРАВИЛ -->
+            <!-- Ссылка на блок Наши правила -->
             <a href="#rules-section" style="color: #ffffff !important;">Регламент</a>
-            <a href="#" style="color: #ffffff !important;">FAQ</a>
+            
+            <!-- ССЫЛКА НА БЛОК О ТУРНИРЕ (ТЕПЕРЬ FAQ) -->
+            <a href="#about-section" style="color: #ffffff !important;">FAQ</a>
+            
             <a href="https://tally.so/r/4aBl7b" target="_blank" style="color: #ffffff !important;">Регистрация</a>
         </div>
     </header>
@@ -101,7 +103,8 @@
     </div>
 
     <!-- Блок "О ТУРНИРЕ" -->
-    <section class="how-to-participate" style="display: flex; flex-direction: column; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 5%;">
+    <!-- ВОТ СЮДА ДОБАВЛЕН ID="ABOUT-SECTION" -->
+    <section id="about-section" class="how-to-participate" style="display: flex; flex-direction: column; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 5%;">
         <h2 style="color: #fff; font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; text-align: center;">
             <span style="display: inline-block; width: 8px; height: 40px; background-color: #ccff00;"></span>
             О ТУРНИРЕ. КАК УЧАСТВОВАТЬ?
@@ -139,7 +142,6 @@
     </div>
 
     <!-- Блок Наши правила -->
-    <!-- ВОТ ТУТ ДОБАВЛЕН ID="RULES-SECTION" -->
     <section id="rules-section" style="background-color: #e0e0e0; padding: 60px 5%; font-family: 'Montserrat', sans-serif; color: #000;">
         <h2 style="font-size: 42px; font-weight: 900; text-transform: uppercase; text-align: center; margin-bottom: 30px;">НАШИ ПРАВИЛА</h2>
 
