@@ -13,14 +13,15 @@
             scroll-behavior: smooth;
         }
 
+        /* Анимация парения для котика */
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
         }
         .floating-cat {
             animation: float 3s ease-in-out infinite;
-            /* Убираем белый фон */
+            /* Убирает белый фон у картинки, если он есть */
             mix-blend-mode: multiply; 
         }
 
@@ -40,6 +41,7 @@
                 background-size: 60% !important; 
             }
 
+            /* Котик спрыгивает вниз на телефонах */
             #about-section {
                 flex-direction: column !important;
                 text-align: center;
@@ -131,7 +133,7 @@
         </div>
     </div>
 
-    <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ) -->
+    <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ-КАРТИНКОЙ) -->
     <section id="about-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; gap: 20px;">
         
         <div style="flex: 1; max-width: 55%; display: flex; flex-direction: column; align-items: flex-start;">
@@ -157,8 +159,8 @@
         </div>
 
         <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; max-width: 45%;">
-            <!-- ВЕРНУЛ CAT.GIF (если файл называется иначе - поменяйте тут) -->
-            <img src="cat.gif" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
+            <!-- ЗДЕСЬ ТЕПЕРЬ CAT.PNG (картинка) -->
+            <img src="cat.png" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
         </div>
 
     </section>
