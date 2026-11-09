@@ -13,6 +13,16 @@
             scroll-behavior: smooth;
         }
 
+        /* Анимация парения для котика */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-cat {
+            animation: float 3s ease-in-out infinite;
+        }
+
         @media (max-width: 900px) {
             .top-nav { padding: 15px 10px !important; }
             .nav-pill {
@@ -98,10 +108,9 @@
     </div>
 
     <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ СПРАВА) -->
-    <!-- Убрал flex-wrap: wrap, чтобы они не переносились вниз, и уменьшил размеры плашек -->
-    <section id="about-section" class="how-to-participate" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; gap: 20px;">
+    <section id="about-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; gap: 20px;">
         
-        <!-- Левая часть: Текст и плашки (сжали, чтобы поместилось справа) -->
+        <!-- Левая часть: Текст и плашки -->
         <div style="flex: 1; max-width: 55%; display: flex; flex-direction: column; align-items: flex-start;">
             <h2 style="color: #fff; font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; display: flex; align-items: center; gap: 15px;">
                 <span style="display: inline-block; width: 8px; height: 35px; background-color: #ccff00;"></span>
@@ -109,7 +118,6 @@
             </h2>
             
             <div class="steps-container" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-                <!-- Уменьшил шрифт до 18px и отступы, чтобы все влезло в одну строку с котом -->
                 <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 18px; font-weight: 900; text-transform: uppercase; padding: 12px 25px; border-radius: 40px; display: inline-block;">
                     <span style="margin-right: 10px;">1.</span> ПЕРЕХОДИ ПО ССЫЛКЕ РЕГИСТРАЦИИ
                 </div>
@@ -125,10 +133,10 @@
             </div>
         </div>
 
-        <!-- Правая часть: Гифка с котиком -->
+        <!-- Правая часть: Гифка с котиком (с анимацией) -->
         <div style="flex: 1; display: flex; justify-content: center; align-items: center; max-width: 45%;">
-            <!-- mix-blend-mode: multiply - убирает белый фон у гифки, делая его прозрачным -->
-            <img src="cat.gif" alt="Котик" style="max-width: 100%; height: auto; max-height: 350px; mix-blend-mode: multiply;">
+            <!-- Добавлен класс floating-cat для анимации -->
+            <img src="cat.gif" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px; border-radius: 20px;">
         </div>
 
     </section>
@@ -189,7 +197,7 @@
         </div>
     </section>
 
-    <!-- Блок с предупреждением (с плашкой "ВАЖНО!!") -->
+    <!-- Блок с предупреждением -->
     <section style="background-color: #000; padding: 60px 5% 40px 5%; font-family: 'Montserrat', sans-serif; border-top: 8px solid #9b30ff; position: relative;">
         
         <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); background-color: #ccff00; color: #000; font-size: 32px; font-weight: 900; padding: 10px 40px; border-radius: 20px; box-shadow: 0 4px 0 #000; text-transform: uppercase;">
