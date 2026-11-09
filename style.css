@@ -12,27 +12,13 @@ body {
     overflow-x: hidden; 
 }
 
-/* Сброс */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-
-body {
-    background-color: #000;
-    color: #fff;
-    overflow-x: hidden; 
-}
-
 /* =========================================
-   ШАПКА (ЖЕСТКО ПО ЦЕНТРУ)
+   ШАПКА (ЦЕНТРИРОВАНИЕ)
    ========================================= */
 .top-nav {
     padding: 30px 40px;
     display: flex;
-    justify-content: center; /* Центрируем контейнер */
+    justify-content: center; /* Жестко по центру */
     width: 100%;
 }
 
@@ -62,10 +48,13 @@ body {
    ГЛАВНЫЙ БЛОК (HERO)
    ========================================= */
 .hero {
-    padding: 20px 40px 0 40px;
-    min-height: 75vh; /* Уменьшили высоту, чтобы монстр прижался к низу */
+    padding: 0 40px; /* Убрали верхний отступ */
     display: flex;
     align-items: center;
+    /* Фиксируем высоту, чтобы монстр был огромным и доставал до низа */
+    height: 80vh; 
+    min-height: 600px;
+    overflow: hidden; /* Обрезаем то, что вылезает за низ */
 }
 
 .hero-container {
@@ -73,16 +62,18 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1500px; /* Расширили контейнер для большого монстра */
+    max-width: 1500px;
     margin: 0 auto;
+    height: 100%;
 }
 
 /* Левая колонка (Текст) */
 .hero-content {
     flex: 1;
-    max-width: 550px;
+    max-width: 600px;
     z-index: 2;
     text-align: left;
+    padding-bottom: 50px; /* Чуть приподнимаем текст */
 }
 
 h1 {
@@ -127,25 +118,61 @@ h1 {
 .hero-image {
     flex: 1;
     display: flex;
-    justify-content: flex-end; /* Прижимаем картинку вправо */
-    align-items: flex-end; /* Прижимаем картинку вниз */
+    justify-content: flex-end; /* Вправо */
+    align-items: flex-end;     /* Вниз, к самой строке */
     height: 100%; 
 }
 
 /* Картинка монстра */
 .cat-img {
-    max-height: 750px; /* Сделали монстра ОГРОМНЫМ (было 650px) */
+    max-height: 110%; /* Делаем монстра больше самого блока */
     width: auto;
     object-fit: contain;
     position: relative;
     z-index: 2;
-    margin-bottom: -30px; /* Легкий сдвиг вниз к строке */
+    margin-bottom: -20px; /* Легкий наезд на строку снизу */
+}
+
+/* =========================================
+   БЕГУЩАЯ СТРОКА
+   ========================================= */
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    background-color: #9b30ff;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+.marquee-content {
+    display: inline-flex;
+    animation: marquee 15s linear infinite;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.marquee-content span { color: #000; margin: 0 20px; }
+.marquee-content .dot { font-size: 16px; }
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* =========================================
    АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ)
    ========================================= */
 @media (max-width: 900px) {
+    .hero {
+        height: auto;
+        padding: 20px 40px;
+    }
     .hero-container {
         flex-direction: column;
     }
@@ -155,139 +182,19 @@ h1 {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 20px;
     }
     .desc-box p { text-align: center; }
     .hero-image {
-        margin-top: 40px;
+        margin-top: 20px;
         justify-content: center;
+        height: auto;
     }
     .cat-img { 
-        max-height: 400px; 
+        max-height: 50vh; 
+        margin-bottom: 0;
     }
 }
-
-/* =========================================
-   ГЛАВНЫЙ БЛОК (HERO)
-   ========================================= */
-.hero {
-    padding: 20px 40px 0 40px;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-}
-
-.hero-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1400px; /* Сделал шире для большого кота */
-    margin: 0 auto;
-}
-
-/* Левая колонка (Текст) - выравнивание влево */
-.hero-content {
-    flex: 1;
-    max-width: 550px;
-    z-index: 2;
-    text-align: left; /* Текст строго слева */
-}
-
-h1 {
-    font-size: 55px;
-    font-weight: 900;
-    line-height: 1.05;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.purple { color: #9b30ff; }
-.yellow-text { color: #ccff00; }
-
-.desc-box {
-    margin-bottom: 30px;
-}
-
-.desc-box p {
-    color: #ccc;
-    font-size: 13px;
-    line-height: 1.5;
-    max-width: 450px;
-}
-
-.btn-yellow {
-    background-color: #ccff00;
-    color: #000;
-    border: none;
-    padding: 18px 40px;
-    border-radius: 30px;
-    font-weight: 900;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.btn-yellow:hover {
-    transform: scale(1.05);
-}
-
-/* Правая колонка (Картинка и Круг) */
-.hero-image {
-    flex: 1;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 600px; /* Высота под большой круг */
-    z-index: 1;
-}
-
-/* Зеленый круг */
-.bg-circle-character {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 550px; /* Сделал круг больше */
-    height: 550px;
-    background-color: #ccff00;
-    border-radius: 50%;
-    z-index: -1; /* Прячем за кота */
-}
-
-/* Картинка кота */
-.cat-img {
-    max-height: 650px; /* Кот теперь большой */
-    width: auto;
-    object-fit: contain;
-    position: relative;
-    z-index: 2;
-    margin-bottom: -50px; /* Немного опускаем вниз, как на макете */
-}
-
-/* =========================================
-   АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ)
-   ========================================= */
-@media (max-width: 900px) {
-    .hero-container {
-        flex-direction: column;
-    }
-    .hero-content {
-        max-width: 100%;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .desc-box p { text-align: center; }
-    .hero-image {
-        margin-top: 40px;
-        height: 400px;
-    }
-    .bg-circle-character { width: 300px; height: 300px; }
-    .cat-img { max-height: 400px; }
-}
-
 /* =========================================
    БЕГУЩИЕ СТРОКИ (MARQUEE)
    ========================================= */
