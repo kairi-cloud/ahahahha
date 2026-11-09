@@ -156,6 +156,70 @@ h1 {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+/* =========================================
+   БЛОК: КАК УЧАСТВОВАТЬ
+   ========================================= */
+.how-to-participate {
+    background-color: #9b30ff; /* Фиолетовый фон, как на скриншоте */
+    padding: 60px 5%;
+    color: #fff;
+}
+
+.how-to-participate h2 {
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    /* Добавим бирюзовое подчеркивание, как на макете */
+    border-bottom: 3px solid #00ffff; 
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Расстояние между плашками */
+    align-items: flex-start; /* Плашки прижаты влево */
+}
+
+/* Желтые плашки */
+.step-pill {
+    background-color: #ccff00; /* Ярко-желтый/салатовый */
+    color: #000;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    border-radius: 40px; /* Сильное скругление */
+    
+    /* Чтобы плашка была по ширине текста, а не на весь экран */
+    display: inline-block; 
+    
+    /* Эффект при наведении (по желанию) */
+    transition: transform 0.2s;
+}
+
+.step-pill:hover {
+    transform: scale(1.02);
+}
+
+/* Цифры внутри плашек */
+.step-num {
+    margin-right: 10px;
+}
+
+/* Адаптив для мобильных телефонов */
+@media (max-width: 768px) {
+    .how-to-participate h2 {
+        font-size: 24px;
+    }
+    .step-pill {
+        font-size: 16px; /* Уменьшаем шрифт на телефонах */
+        padding: 12px 20px;
+        white-space: normal; /* Разрешаем тексту переноситься на новую строку */
+    }
+}
 
 /* =========================================
    АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ)
