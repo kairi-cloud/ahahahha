@@ -12,35 +12,158 @@ body {
     overflow-x: hidden; 
 }
 
+/* Сброс */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden; 
+}
+
 /* =========================================
-   ШАПКА (МЕНЮ ТАБЛЕТКОЙ)
+   ШАПКА (ЖЕСТКО ПО ЦЕНТРУ)
    ========================================= */
 .top-nav {
-    padding: 30px 40px; /* Увеличили отступ сверху и снизу */
+    padding: 30px 40px;
     display: flex;
-    justify-content: center; /* Центрируем по горизонтали */
+    justify-content: center; /* Центрируем контейнер */
+    width: 100%;
 }
 
 .nav-pill {
     background-color: #e5e5e5;
-    border-radius: 50px; /* Сделали скругление более круглым */
-    padding: 18px 60px; /* Увеличили внутренние отступы (таблетка стала больше) */
+    border-radius: 50px;
+    padding: 18px 60px;
     display: flex;
-    gap: 50px; /* Увеличили расстояние между ссылками */
+    gap: 50px;
 }
 
 .nav-pill a {
     text-decoration: none;
     color: #000;
-    font-size: 18px; /* Увеличили размер шрифта (было 14px) */
+    font-size: 18px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.5px; /* Немного разрядили буквы для стиля */
+    letter-spacing: 0.5px;
     transition: transform 0.2s;
 }
 
 .nav-pill a:hover {
-    transform: scale(1.05); /* Легкий эффект при наведении */
+    transform: scale(1.05);
+}
+
+/* =========================================
+   ГЛАВНЫЙ БЛОК (HERO)
+   ========================================= */
+.hero {
+    padding: 20px 40px 0 40px;
+    min-height: 75vh; /* Уменьшили высоту, чтобы монстр прижался к низу */
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1500px; /* Расширили контейнер для большого монстра */
+    margin: 0 auto;
+}
+
+/* Левая колонка (Текст) */
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+    z-index: 2;
+    text-align: left;
+}
+
+h1 {
+    font-size: 55px;
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.purple { color: #9b30ff; }
+.yellow-text { color: #ccff00; }
+
+.desc-box {
+    margin-bottom: 30px;
+}
+
+.desc-box p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 450px;
+}
+
+.btn-yellow {
+    background-color: #ccff00;
+    color: #000;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-yellow:hover {
+    transform: scale(1.05);
+}
+
+/* Правая колонка (Картинка) */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Прижимаем картинку вправо */
+    align-items: flex-end; /* Прижимаем картинку вниз */
+    height: 100%; 
+}
+
+/* Картинка монстра */
+.cat-img {
+    max-height: 750px; /* Сделали монстра ОГРОМНЫМ (было 650px) */
+    width: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    margin-bottom: -30px; /* Легкий сдвиг вниз к строке */
+}
+
+/* =========================================
+   АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ)
+   ========================================= */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column;
+    }
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .desc-box p { text-align: center; }
+    .hero-image {
+        margin-top: 40px;
+        justify-content: center;
+    }
+    .cat-img { 
+        max-height: 400px; 
+    }
 }
 
 /* =========================================
