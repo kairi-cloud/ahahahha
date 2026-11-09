@@ -20,10 +20,9 @@
             }
             .nav-pill a { font-size: 12px !important; letter-spacing: 0 !important; }
             
-            /* На телефонах сдвигаем фон чуть правее и уменьшаем */
             .hero {
                 background-position: 80% center !important;
-                background-size: contain !important; /* Картинка вписывается целиком */
+                background-size: contain !important;
             }
         }
     </style>
@@ -39,11 +38,9 @@
         </div>
     </header>
 
-    <!-- ГЛАВНЫЙ БЛОК: ФОН УМЕНЬШЕН И СПРАВА -->
-    <!-- background-size: contain - вписывает картинку целиком, не растягивая -->
+    <!-- ГЛАВНЫЙ БЛОК -->
     <section class="hero" style="background-image: url('bg.png') !important; background-size: 80% !important; background-position: right center !important; background-repeat: no-repeat !important; background-color: #000 !important;">
         <div class="hero-container">
-            
             <div class="hero-content">
                 <h1>УЧАСТВУЙ В<br><span class="purple">ПЕРВОМ</span><br>ТУРНИРЕ<br><span class="yellow-text">“DESS CUP”</span></h1>
                 
@@ -53,9 +50,7 @@
                 
                 <a href="https://tally.so/r/4aBl7b" target="_blank" class="btn-yellow" id="btn-main">РЕГИСТРАЦИЯ ТУТ</a>
             </div>
-
             <div class="hero-image"></div>
-
         </div>
     </section>
 
@@ -143,8 +138,10 @@
         <div style="background-color: #9b30ff; padding: 20px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
             <p style="color: #fff; font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0; max-width: 60%;">Полностью регламент можно прочитать в тг/комьюнити стак би</p>
             <div style="display: flex; gap: 15px;">
+                <!-- Кнопка "ТЫК! стак" (пока заглушка, вставьте свою ссылку) -->
                 <a href="#" target="_blank" style="background-color: #000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 0 10px rgba(255,255,255,0.2);">ТЫК! стак</a>
-                <a href="#" target="_blank" style="background-color: #000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 0 10px rgba(255,255,255,0.2);">ТЫК! тг</a>
+                <!-- Кнопка "ТЫК! тг" (ВСТАВЛЕНА ВАША ССЫЛКА) -->
+                <a href="https://t.me/+cwaGk2woJXEzMDdi" target="_blank" style="background-color: #000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 0 10px rgba(255,255,255,0.2);">ТЫК! тг</a>
             </div>
         </div>
 
@@ -180,13 +177,7 @@
         </div>
     </section>
 
-    <!-- СКРИПТ -->
-    <script>
-        document.getElementById('btn-main').addEventListener('click', function(e) {
-            window.open('https://tally.so/r/4aBl7b', '_blank');
-        });
-    </script>
-        <!-- Блок с предупреждением (под правилами) -->
+    <!-- Блок с предупреждением (ПОД ПРАВИЛАМИ) -->
     <section style="background-color: #000; padding: 40px 5%; font-family: 'Montserrat', sans-serif; border-top: 8px solid #9b30ff;">
         <p style="color: #ccff00; font-size: 18px; font-weight: 900; line-height: 1.5; margin-bottom: 20px; text-transform: uppercase;">
             *При нарушениях регламента админы/организаторы имеют право вмешаться и вынести своё решение исходя из нарушений, прописанных в регламенте.
@@ -195,6 +186,13 @@
             *Если заметили неладное, то обращайтесь к админам/организаторам.
         </p>
     </section>
+
+    <!-- СКРИПТ (ПЕРЕНЕСЕН В САМЫЙ КОНЕЦ) -->
+    <script>
+        document.getElementById('btn-main').addEventListener('click', function(e) {
+            window.open('https://tally.so/r/4aBl7b', '_blank');
+        });
+    </script>
 
 </body>
 </html>
