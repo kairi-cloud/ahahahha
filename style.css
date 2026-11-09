@@ -13,13 +13,16 @@ body {
 }
 
 /* =========================================
-   ШАПКА (ЦЕНТРИРОВАНИЕ)
+   ШАПКА (ПО ЦЕНТРУ)
    ========================================= */
 .top-nav {
-    padding: 30px 40px;
-    display: flex;
-    justify-content: center; /* Жестко по центру */
     width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    position: absolute; /* Накладываем поверх фона */
+    top: 0;
+    z-index: 100;
 }
 
 .nav-pill {
@@ -36,7 +39,6 @@ body {
     font-size: 18px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     transition: transform 0.2s;
 }
 
@@ -48,89 +50,125 @@ body {
    ГЛАВНЫЙ БЛОК (HERO)
    ========================================= */
 .hero {
-    padding: 0 40px; /* Убрали верхний отступ */
+    padding: 150px 40px 0 40px; /* Отступ сверху для меню */
     display: flex;
     align-items: center;
-    /* Фиксируем высоту, чтобы монстр был огромным и доставал до низа */
-    height: 80vh; 
-    min-height: 600px;
-    overflow: hidden; /* Обрезаем то, что вылезает за низ */
+    min-height: 100vh; /* Блок на весь экран */
+    position: relative;
+    overflow: hidden; 
 }
+
+/* Рваные фиолетовые всполохи на фоне */
+.bg-splashes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Здесь мы имитируем рваные полосы с помощью радиальных градиентов и свечения */
+    background: 
+        radial-gradient(ellipse at 80% 30%, rgba(155, 48, 255, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(155, 48, 255, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, transparent 40%, rgba(155, 48, 255, 0.1) 45%, rgba(155, 48, 255, 0.3) 50%, transparent 55%);
+    pointer-events: none;
+}
+
+/* Если у вас есть картинка с рваными полосами (как на макете), 
+   раскомментируйте код ниже и залейте файл bg.png */
+/*
+.bg-splashes {
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+}
+*/
 
 .hero-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     width: 100%;
-    max-width: 1500px;
+    max-width: 1300px;
     margin: 0 auto;
-    height: 100%;
+    position: relative;
+    z-index: 2; 
 }
 
 /* Левая колонка (Текст) */
 .hero-content {
     flex: 1;
     max-width: 600px;
-    z-index: 2;
     text-align: left;
-    padding-bottom: 50px; /* Чуть приподнимаем текст */
 }
 
 h1 {
-    font-size: 55px;
+    font-size: 65px; /* Сделали шрифт крупнее */
     font-weight: 900;
     line-height: 1.05;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .purple { color: #9b30ff; }
 .yellow-text { color: #ccff00; }
 
 .desc-box {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .desc-box p {
     color: #ccc;
-    font-size: 13px;
+    font-size: 16px; /* Чуть увеличили текст описания */
     line-height: 1.5;
-    max-width: 450px;
+    max-width: 480px;
 }
 
+/* Кнопка с ярким свечением */
 .btn-yellow {
     background-color: #ccff00;
     color: #000;
     border: none;
-    padding: 18px 40px;
-    border-radius: 30px;
+    padding: 20px 50px;
+    border-radius: 40px;
     font-weight: 900;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(204, 255, 0, 0.4); /* Неоновое свечение */
 }
 
 .btn-yellow:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(204, 255, 0, 0.8); /* Усиление свечения */
 }
 
 /* Правая колонка (Картинка) */
 .hero-image {
     flex: 1;
     display: flex;
-    justify-content: flex-end; /* Вправо */
-    align-items: flex-end;     /* Вниз, к самой строке */
-    height: 100%; 
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-/* Картинка монстра */
-.cat-img {
-    max-height: 110%; /* Делаем монстра больше самого блока */
+/* Монстр с фиолетовым свечением */
+.monstr-img {
+    max-height: 600px;
     width: auto;
     object-fit: contain;
     position: relative;
-    z-index: 2;
-    margin-bottom: -20px; /* Легкий наезд на строку снизу */
+    z-index: 3;
+    /* Мощное фиолетовое свечение вокруг монстра, как на макете */
+    filter: drop-shadow(0px 0px 40px rgba(155, 48, 255, 0.8));
+    animation: float 4s ease-in-out infinite; /* Легкая анимация парения */
+}
+
+/* Анимация парения монстра */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
 
 /* =========================================
@@ -139,14 +177,12 @@ h1 {
 .marquee {
     overflow: hidden;
     white-space: nowrap;
-    padding: 15px 0;
+    padding: 18px 0;
     display: flex;
     align-items: center;
     position: relative;
     z-index: 10;
     background-color: #9b30ff;
-    border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
 }
 
 .marquee-content {
@@ -157,8 +193,8 @@ h1 {
     text-transform: uppercase;
 }
 
-.marquee-content span { color: #000; margin: 0 20px; }
-.marquee-content .dot { font-size: 16px; }
+.marquee-content span { color: #000; margin: 0 25px; }
+.marquee-content .arrow { font-size: 24px; font-weight: 700; }
 
 @keyframes marquee {
     0% { transform: translateX(0); }
@@ -168,31 +204,28 @@ h1 {
 /* =========================================
    АДАПТИВ (ДЛЯ ТЕЛЕФОНОВ)
    ========================================= */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .hero {
+        padding: 120px 20px 40px 20px;
         height: auto;
-        padding: 20px 40px;
     }
     .hero-container {
-        flex-direction: column;
+        flex-direction: column-reverse; /* Монстр сверху на телефонах */
+        text-align: center;
     }
     .hero-content {
         max-width: 100%;
-        text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 20px;
     }
+    h1 { font-size: 45px; }
     .desc-box p { text-align: center; }
     .hero-image {
-        margin-top: 20px;
-        justify-content: center;
-        height: auto;
+        margin-bottom: 30px;
     }
-    .cat-img { 
-        max-height: 50vh; 
-        margin-bottom: 0;
+    .monstr-img { 
+        max-height: 350px; 
     }
 }
 /* =========================================
