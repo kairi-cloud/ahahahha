@@ -13,7 +13,7 @@
             scroll-behavior: smooth;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .top-nav { padding: 15px 10px !important; }
             .nav-pill {
                 padding: 10px 15px !important;
@@ -24,7 +24,6 @@
             }
             .nav-pill a { font-size: 12px !important; letter-spacing: 0 !important; }
             
-            /* На телефонах тоже опускаем вниз */
             .hero {
                 background-position: 90% 80% !important;
                 background-size: 60% !important; 
@@ -44,7 +43,6 @@
     </header>
 
     <!-- ГЛАВНЫЙ БЛОК -->
-    <!-- background-position: 100% 80% - сдвигает картинку вправо и ВНИЗ -->
     <section class="hero" style="background-image: url('bg.png') !important; background-size: 53% !important; background-position: 100% 80% !important; background-repeat: no-repeat !important; background-color: #000 !important;">
         <div class="hero-container">
             <div class="hero-content">
@@ -99,27 +97,38 @@
         </div>
     </div>
 
-    <!-- Блок "О ТУРНИРЕ" -->
-    <section id="about-section" class="how-to-participate" style="display: flex; flex-direction: column; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 5%;">
-        <h2 style="color: #fff; font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; text-align: center;">
-            <span style="display: inline-block; width: 8px; height: 40px; background-color: #ccff00;"></span>
-            О ТУРНИРЕ. КАК УЧАСТВОВАТЬ?
-        </h2>
+    <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ СПРАВА) -->
+    <section id="about-section" class="how-to-participate" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; flex-wrap: wrap; gap: 40px;">
         
-        <div class="steps-container" style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-            <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
-                <span style="margin-right: 10px;">1.</span> ПЕРЕХОДИ ПО ССЫЛКЕ РЕГИСТРАЦИИ
-            </div>
-            <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
-                <span style="margin-right: 10px;">2.</span> ЗАПОЛНЯЙ ФОРМУ
-            </div>
-            <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
-                <span style="margin-right: 10px;">3.</span> ДОЖДИСЬ РАСПРЕДЕЛЕНИЯ В КОМАНДУ
-            </div>
-            <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
-                <span style="margin-right: 10px;">4.</span> ВЕСЕЛИСЬ И ПОБЕЖДАЙ
+        <!-- Левая часть: Текст и плашки -->
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: flex-start;">
+            <h2 style="color: #fff; font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 15px;">
+                <span style="display: inline-block; width: 8px; height: 40px; background-color: #ccff00;"></span>
+                О ТУРНИРЕ. КАК УЧАСТВОВАТЬ?
+            </h2>
+            
+            <div class="steps-container" style="display: flex; flex-direction: column; gap: 15px; align-items: flex-start;">
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">1.</span> ПЕРЕХОДИ ПО ССЫЛКЕ РЕГИСТРАЦИИ
+                </div>
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">2.</span> ЗАПОЛНЯЙ ФОРМУ
+                </div>
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">3.</span> ДОЖДИСЬ РАСПРЕДЕЛЕНИЯ В КОМАНДУ
+                </div>
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 24px; font-weight: 900; text-transform: uppercase; padding: 15px 30px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">4.</span> ВЕСЕЛИСЬ И ПОБЕЖДАЙ
+                </div>
             </div>
         </div>
+
+        <!-- Правая часть: Гифка с котиком -->
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center; min-width: 300px;">
+            <!-- Убедитесь, что гифка называется cat.gif и лежит в корне -->
+            <img src="cat.gif" alt="Котик" style="max-width: 100%; height: auto; max-height: 400px; filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.4));">
+        </div>
+
     </section>
 
     <!-- БЕГУЩАЯ СТРОКА №2 -->
