@@ -20,9 +20,10 @@
             }
             .nav-pill a { font-size: 12px !important; letter-spacing: 0 !important; }
             
-            /* На телефонах сдвигаем фон чуть правее, чтобы монстр был виден */
+            /* На телефонах сдвигаем фон чуть правее и уменьшаем */
             .hero {
-                background-position: 70% center !important;
+                background-position: 80% center !important;
+                background-size: contain !important; /* Картинка вписывается целиком */
             }
         }
     </style>
@@ -38,8 +39,9 @@
         </div>
     </header>
 
-    <!-- ГЛАВНЫЙ БЛОК: ФОН СДВИНУТ ВПРАВО -->
-    <section class="hero" style="background-image: url('bg.png') !important; background-size: cover !important; background-position: right center !important; background-repeat: no-repeat !important; background-color: #000 !important;">
+    <!-- ГЛАВНЫЙ БЛОК: ФОН УМЕНЬШЕН И СПРАВА -->
+    <!-- background-size: contain - вписывает картинку целиком, не растягивая -->
+    <section class="hero" style="background-image: url('bg.png') !important; background-size: 80% !important; background-position: right center !important; background-repeat: no-repeat !important; background-color: #000 !important;">
         <div class="hero-container">
             
             <div class="hero-content">
