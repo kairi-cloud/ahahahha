@@ -209,8 +209,8 @@ h1 {
     margin-right: 10px;
 }
 
-    <!-- Блок "О ТУРНИРЕ. КАК УЧАСТВОВАТЬ?" -->
-    <section style="background-color: #9b30ff; padding: 60px 40px; font-family: 'Montserrat', sans-serif;">
+      <!-- Блок "О ТУРНИРЕ. КАК УЧАСТВОВАТЬ?" -->
+    <section style="background: linear-gradient(180deg, #9b30ff 0%, #6a00c9 100%); padding: 60px 40px; font-family: 'Montserrat', sans-serif;">
         
         <h2 style="color: #fff; font-size: 42px; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; display: inline-block; border-bottom: 4px solid #00ffff; padding-bottom: 5px;">
             | О ТУРНИРЕ. КАК УЧАСТВОВАТЬ?
@@ -218,25 +218,24 @@ h1 {
         
         <div style="display: flex; flex-direction: column; gap: 20px; align-items: flex-start;">
             
-            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block;">
+            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
                 <span style="margin-right: 10px;">1.</span> ПЕРЕХОДИ ПО ССЫЛКЕ РЕГИСТРАЦИИ
             </div>
             
-            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block;">
+            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
                 <span style="margin-right: 10px;">2.</span> ЗАПОЛНЯЙ ФОРМУ
             </div>
             
-            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block;">
+            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
                 <span style="margin-right: 10px;">3.</span> ДОЖДИСЬ РАСПРЕДЕЛЕНИЯ В КОМАНДУ
             </div>
             
-            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block;">
+            <div style="background-color: #ccff00; color: #000; font-size: 28px; font-weight: 900; text-transform: uppercase; padding: 20px 40px; border-radius: 50px; display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
                 <span style="margin-right: 10px;">4.</span> ВЕСЕЛИСЬ И ПОБЕЖДАЙ
             </div>
             
         </div>
     </section>
-/* =========================================
    БЛОК НАШИ ПРАВИЛА
    ========================================= */
 .rules {
