@@ -318,6 +318,61 @@ h1 {
     line-height: 1.4;
     margin: 0;
 }
+/* =========================================
+   НАВИГАЦИЯ (ОБЩИЕ СТИЛИ)
+   ========================================= */
+.top-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px; /* Добавили отступы по бокам, чтобы не прилипала */
+    position: absolute; 
+    top: 0;
+    z-index: 100;
+}
+
+.nav-pill {
+    background-color: #9b30ff !important; /* Фиолетовый */
+    border-radius: 50px;
+    padding: 18px 60px;
+    display: flex;
+    gap: 50px;
+}
+
+.nav-pill a {
+    text-decoration: none;
+    color: #ffffff !important; /* Белый текст */
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+}
+
+.nav-pill a:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   АДАПТИВ ДЛЯ НАВИГАЦИИ (ТЕЛЕФОНЫ)
+   ========================================= */
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 20px 10px; /* Уменьшаем отступ сверху */
+    }
+
+    .nav-pill {
+        padding: 12px 20px; /* Уменьшаем внутренние отступы плашки */
+        gap: 15px; /* Уменьшаем расстояние между словами */
+        width: 100%; /* Плашка растягивается на всю ширину */
+        max-width: 400px; /* Но не больше 400px */
+        justify-content: space-around; /* Равномерно распределяем ссылки */
+    }
+
+    .nav-pill a {
+        font-size: 12px; /* Уменьшаем шрифт, чтобы влезло */
+        letter-spacing: 0; /* Убираем лишнее расстояние между буквами */
+    }
+}
 
 /* =========================================
    АДАПТИВ
