@@ -13,7 +13,7 @@ body {
 }
 
 /* =========================================
-   ШАПКА (ПО ЦЕНТРУ, ТЕПЕРЬ ФИОЛЕТОВАЯ)
+   ШАПКА (ПО ЦЕНТРУ, ФИОЛЕТОВАЯ)
    ========================================= */
 .top-nav {
     width: 100%;
@@ -26,7 +26,7 @@ body {
 }
 
 .nav-pill {
-    background-color: #9b30ff; /* ИЗМЕНЕНО: Фиолетовый фон */
+    background-color: #9b30ff !important; /* Жестко фиолетовый */
     border-radius: 50px;
     padding: 18px 60px;
     display: flex;
@@ -35,7 +35,7 @@ body {
 
 .nav-pill a {
     text-decoration: none;
-    color: #ffffff; /* ИЗМЕНЕНО: Белый текст */
+    color: #ffffff !important; /* Жестко белый текст */
     font-size: 18px;
     font-weight: 900;
     text-transform: uppercase;
@@ -169,26 +169,22 @@ h1 {
 .marquee-purple .white { color: #fff; }
 .marquee-purple .star { color: #000; }
 
-
 /* =========================================
    ВТОРАЯ СТРОКА (Черная, новые фразы)
    ========================================= */
 .marquee-black {
-    background-color: #000; /* Черный фон */
-    border-top: 2px solid #9b30ff; /* Фиолетовая обводка сверху */
-    border-bottom: 2px solid #9b30ff; /* Фиолетовая обводка снизу */
+    background-color: #000 !important;
+    border-top: 2px solid #9b30ff;
+    border-bottom: 2px solid #9b30ff;
 }
 
-/* Белый текст для второй строки */
 .marquee-black span { 
     color: #fff !important; 
 }
 
-/* Белые звездочки */
 .marquee-black .star { 
     color: #fff !important; 
 }
-
 
 /* =========================================
    БЛОК: КАК УЧАСТВОВАТЬ
@@ -245,45 +241,6 @@ h1 {
 
 .step-num {
     margin-right: 10px;
-}
-
-/* =========================================
-   БЛОК НАШИ ПРАВИЛА
-   ========================================= */
-.rules {
-    background-color: #e0e0e0;
-    padding: 60px 5%;
-    color: #000;
-}
-
-.rules h2 {
-    font-size: 32px;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-}
-
-.rules-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.rules-list li {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 20px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.square {
-    width: 20px;
-    height: 20px;
-    background-color: #333;
-    flex-shrink: 0;
 }
 
 /* =========================================
