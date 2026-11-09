@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
     
-    <!-- ВСТРОЕННЫЕ СТИЛИ ДЛЯ МОБИЛЬНОГО МЕНЮ И ПЛАВНОЙ ПРОКРУТКИ -->
+    <!-- ВСТРОЕННЫЕ СТИЛИ -->
     <style>
-        /* Включаем плавную прокрутку для всей страницы */
         html {
             scroll-behavior: smooth;
         }
@@ -25,8 +24,9 @@
             }
             .nav-pill a { font-size: 12px !important; letter-spacing: 0 !important; }
             
+            /* На телефонах тоже опускаем вниз */
             .hero {
-                background-position: 90% center !important;
+                background-position: 90% 80% !important;
                 background-size: 60% !important; 
             }
         }
@@ -37,18 +37,15 @@
     <!-- Верхнее меню -->
     <header class="top-nav">
         <div class="nav-pill" style="background-color: #9b30ff !important;">
-            <!-- Ссылка на блок Наши правила -->
             <a href="#rules-section" style="color: #ffffff !important;">Регламент</a>
-            
-            <!-- ССЫЛКА НА БЛОК О ТУРНИРЕ (ТЕПЕРЬ FAQ) -->
             <a href="#about-section" style="color: #ffffff !important;">FAQ</a>
-            
             <a href="https://tally.so/r/4aBl7b" target="_blank" style="color: #ffffff !important;">Регистрация</a>
         </div>
     </header>
 
     <!-- ГЛАВНЫЙ БЛОК -->
-    <section class="hero" style="background-image: url('bg.png') !important; background-size: 53% !important; background-position: 100% center !important; background-repeat: no-repeat !important; background-color: #000 !important;">
+    <!-- background-position: 100% 80% - сдвигает картинку вправо и ВНИЗ -->
+    <section class="hero" style="background-image: url('bg.png') !important; background-size: 53% !important; background-position: 100% 80% !important; background-repeat: no-repeat !important; background-color: #000 !important;">
         <div class="hero-container">
             <div class="hero-content">
                 <h1>УЧАСТВУЙ В<br><span class="purple">ПЕРВОМ</span><br>ТУРНИРЕ<br><span class="yellow-text">“DESS CUP”</span></h1>
@@ -103,7 +100,6 @@
     </div>
 
     <!-- Блок "О ТУРНИРЕ" -->
-    <!-- ВОТ СЮДА ДОБАВЛЕН ID="ABOUT-SECTION" -->
     <section id="about-section" class="how-to-participate" style="display: flex; flex-direction: column; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 5%;">
         <h2 style="color: #fff; font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; text-align: center;">
             <span style="display: inline-block; width: 8px; height: 40px; background-color: #ccff00;"></span>
