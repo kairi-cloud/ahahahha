@@ -43,80 +43,118 @@ body {
 .hero {
     background-color: #000;
     display: flex;
-    justify-content: space-between;
-    padding: 40px 5% 0 5%;
+    flex-direction: column; /* Ставим элементы друг под другом */
+    align-items: center;    /* Центрируем по горизонтали */
+    justify-content: center;
+    padding: 60px 5% 0 5%;
     position: relative;
     overflow: hidden;
+    min-height: 80vh;       /* Чтобы блок был высоким */
 }
 
-.hero-content {
-    flex: 1;
-    z-index: 2;
-    padding-bottom: 50px;
+/* Зеленые круги на фоне */
+.bg-circle-large {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background-color: #ccff00;
+    border-radius: 50%;
+    opacity: 0.1; /* Очень прозрачный, просто для атмосферы */
+    z-index: 1;
+}
+
+.bg-circle-character {
+    position: absolute;
+    top: 55%;
+    right: 15%; /* Сдвигаем вправо, ближе к персонажу */
+    transform: translateY(-50%);
+    width: 450px;
+    height: 450px;
+    background-color: #ccff00;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Центральный контент */
+.hero-center {
+    text-align: center; /* Текст по центру */
+    z-index: 2;         /* Поверх кругов */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
 }
 
 h1 {
-    font-size: 42px;
+    font-size: 52px;
     font-weight: 900;
     line-height: 1.1;
     color: #fff;
     text-transform: uppercase;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .purple { color: #9b30ff; }
 .yellow-text { color: #ccff00; }
 
 .desc-box {
-    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-    border-left: 3px solid #9b30ff;
-    padding-left: 15px;
-    margin-bottom: 25px;
-    max-width: 400px;
+    border-left: none; /* Убираем полоску слева, так как текст по центру */
+    padding: 0;
+    margin-bottom: 30px;
+    max-width: 600px;
 }
 
 .desc-box p {
-    color: #ddd;
-    font-size: 12px;
+    color: #ccc;
+    font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 5px;
-}
-
-.desc-box .sub-desc {
-    color: #888;
-    font-size: 10px;
+    text-align: center;
 }
 
 .btn-yellow {
     background-color: #ccff00;
     color: #000;
     border: none;
-    padding: 15px 30px;
+    padding: 18px 45px;
     border-radius: 30px;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
 }
 
 .btn-yellow:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
 }
 
+/* Картинка персонажа */
 .hero-image {
-    flex: 1;
+    margin-top: 40px;
+    z-index: 2; /* Персонаж поверх зеленого круга */
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
 }
 
 .cat-img {
     max-width: 100%;
     height: auto;
-    max-height: 400px;
+    max-height: 450px;
     object-fit: contain;
-    /* Если картинки нет, этот блок просто пустой. 
-       Вставьте свою картинку с прозрачным фоном */
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+    h1 { font-size: 36px; }
+    .bg-circle-character { width: 300px; height: 300px; right: 5%; }
+    .bg-circle-large { width: 400px; height: 400px; }
+    .cat-img { max-height: 300px; }
 }
 
 /* =========================================
