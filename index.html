@@ -20,9 +20,10 @@
             }
             .nav-pill a { font-size: 12px !important; letter-spacing: 0 !important; }
             
+            /* На телефонах делаем картинку еще меньше и сдвигаем вправо */
             .hero {
-                background-position: 80% center !important;
-                background-size: contain !important;
+                background-position: 90% center !important;
+                background-size: 60% !important; 
             }
         }
     </style>
@@ -38,8 +39,10 @@
         </div>
     </header>
 
-    <!-- ГЛАВНЫЙ БЛОК -->
-    <section class="hero" style="background-image: url('bg.png') !important; background-size: 80% !important; background-position: right center !important; background-repeat: no-repeat !important; background-color: #000 !important;">
+    <!-- ГЛАВНЫЙ БЛОК (УМЕНЬШЕН И СДВИНУТ ВПРАВО) -->
+    <!-- background-size: 53% - уменьшает картинку -->
+    <!-- background-position: 100% center - прижимает к самому правому краю -->
+    <section class="hero" style="background-image: url('bg.png') !important; background-size: 53% !important; background-position: 100% center !important; background-repeat: no-repeat !important; background-color: #000 !important;">
         <div class="hero-container">
             <div class="hero-content">
                 <h1>УЧАСТВУЙ В<br><span class="purple">ПЕРВОМ</span><br>ТУРНИРЕ<br><span class="yellow-text">“DESS CUP”</span></h1>
@@ -138,9 +141,7 @@
         <div style="background-color: #9b30ff; padding: 20px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
             <p style="color: #fff; font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0; max-width: 60%;">Полностью регламент можно прочитать в тг/комьюнити стак би</p>
             <div style="display: flex; gap: 15px;">
-                <!-- ССЫЛКА НА СТАК БИ ВСТАВЛЕНА СЮДА -->
                 <a href="https://stackb.net/c/dess_cup" target="_blank" style="background-color: #000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 0 10px rgba(255,255,255,0.2);">ТЫК! стак</a>
-                <!-- ССЫЛКА НА ТГ -->
                 <a href="https://t.me/+cwaGk2woJXEzMDdi" target="_blank" style="background-color: #000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 0 10px rgba(255,255,255,0.2);">ТЫК! тг</a>
             </div>
         </div>
@@ -148,7 +149,6 @@
         <h3 style="font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px;">ИЗ ОСНОВНОГО:</h3>
 
         <div style="display: flex; flex-direction: column; gap: 20px;">
-            <!-- Правило 1 -->
             <div style="background-color: #e0e0e0; border: 2px solid #000; border-radius: 10px; padding: 20px; box-shadow: 0 4px 0 #000;">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
                     <span style="display: inline-block; width: 25px; height: 25px; background-color: #9b30ff; border-radius: 50%; border: 2px solid #000;"></span>
@@ -157,7 +157,6 @@
                 <p style="font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0;">Важно помнить, что мы все играем в игру не ради ссор и унижений. Никто корову не проигрывает. Уважайте друг друга.</p>
             </div>
 
-            <!-- Правило 2 -->
             <div style="background-color: #e0e0e0; border: 2px solid #000; border-radius: 10px; padding: 20px; box-shadow: 0 4px 0 #000;">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
                     <span style="display: inline-block; width: 25px; height: 25px; background-color: #9b30ff; border-radius: 50%; border: 2px solid #000;"></span>
@@ -166,7 +165,6 @@
                 <p style="font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0;">Чтобы не рушить вайб, то к участию не допускаются: различные читы, аим боты или "у меня парень иммо3 за меня сыграет, закерит". Будьте честны с собой и с другими.</p>
             </div>
 
-            <!-- Правило 3 -->
             <div style="background-color: #e0e0e0; border: 2px solid #000; border-radius: 10px; padding: 20px; box-shadow: 0 4px 0 #000;">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
                     <span style="display: inline-block; width: 25px; height: 25px; background-color: #9b30ff; border-radius: 50%; border: 2px solid #000;"></span>
@@ -180,7 +178,6 @@
     <!-- Блок с предупреждением (с плашкой "ВАЖНО!!") -->
     <section style="background-color: #000; padding: 60px 5% 40px 5%; font-family: 'Montserrat', sans-serif; border-top: 8px solid #9b30ff; position: relative;">
         
-        <!-- Желтая плашка "ВАЖНО!!" по центру -->
         <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); background-color: #ccff00; color: #000; font-size: 32px; font-weight: 900; padding: 10px 40px; border-radius: 20px; box-shadow: 0 4px 0 #000; text-transform: uppercase;">
             ВАЖНО!!
         </div>
