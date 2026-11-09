@@ -247,8 +247,8 @@
 
         const audio = document.getElementById('bg-music');
         
-        // СНИЖАЕМ ГРОМКОСТЬ НА 50%
-        audio.volume = 0.5; 
+        // СНИЖАЕМ ГРОМКОСТЬ ДО 20%
+        audio.volume = 0.2; 
 
         audio.play().catch(function() {
             document.body.addEventListener('click', function() {
