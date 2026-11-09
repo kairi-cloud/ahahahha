@@ -23,6 +23,58 @@
             mix-blend-mode: multiply; 
         }
 
+        /* Стили для плеера */
+        .player-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #9b30ff;
+            padding: 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            z-index: 9999;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .play-btn {
+            background-color: #ccff00;
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .play-btn:hover { transform: scale(1.1); }
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 8px;
+            background: #000;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #ccff00;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .volume-slider { width: 60px; }
+        }
+
         @media (max-width: 900px) {
             .top-nav { padding: 15px 10px !important; }
             .nav-pill {
@@ -65,6 +117,12 @@
     <audio id="bg-music" loop autoplay style="display: none;">
         <source src="music.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- ПЛЕЕР С РЕГУЛИРОВКОЙ ГРОМКОСТИ -->
+    <div class="player-container">
+        <button class="play-btn" id="play-pause-btn" onclick="toggleMusic()">▶</button>
+        <input type="range" id="volume-control" class="volume-slider" min="0" max="1" step="0.05" value="0.2">
+    </div>
 
     <!-- Верхнее меню -->
     <header class="top-nav">
@@ -246,13 +304,37 @@
         });
 
         const audio = document.getElementById('bg-music');
-        
-        // СНИЖАЕМ ГРОМКОСТЬ ДО 20%
-        audio.volume = 0.2; 
+        const playBtn = document.getElementById('play-pause-btn');
+        const volumeControl = document.getElementById('volume-control');
 
-        audio.play().catch(function() {
-            document.body.addEventListener('click', function() {
+        // Устанавливаем начальную громкость (20%)
+        audio.volume = 0.2;
+
+        // Функция кнопки Play/Pause
+        function toggleMusic() {
+            if (audio.paused) {
                 audio.play();
+                playBtn.innerHTML = "⏸"; // Меняем иконку на паузу
+            } else {
+                audio.pause();
+                playBtn.innerHTML = "▶"; // Меняем иконку на плей
+            }
+        }
+
+        // Ползунок громкости
+        volumeControl.addEventListener('input', function() {
+            audio.volume = this.value;
+        });
+
+        // Попытка автозапуска при клике в любом месте (обход блокировки)
+        audio.play().then(() => {
+            playBtn.innerHTML = "⏸";
+        }).catch(function() {
+            document.body.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.innerHTML = "⏸";
+                }
             }, { once: true });
         });
     </script>
