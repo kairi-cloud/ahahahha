@@ -13,7 +13,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Анимация парения для котика */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -21,6 +20,7 @@
         }
         .floating-cat {
             animation: float 3s ease-in-out infinite;
+            /* Убираем белый фон */
             mix-blend-mode: multiply; 
         }
 
@@ -157,7 +157,8 @@
         </div>
 
         <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; max-width: 45%;">
-            <img src="cat.png" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
+            <!-- ВЕРНУЛ CAT.GIF (если файл называется иначе - поменяйте тут) -->
+            <img src="cat.gif" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
         </div>
 
     </section>
@@ -235,23 +236,17 @@
 
     <!-- СКРИПТЫ -->
     <script>
-        // 1. Скрипт для кнопки регистрации
         document.getElementById('btn-main').addEventListener('click', function(e) {
             window.open('https://tally.so/r/4aBl7b', '_blank');
         });
 
-        // 2. Скрипт для музыки (обход блокировки автоплея)
         const audio = document.getElementById('bg-music');
-        
-        // Пытаемся включить сразу
         audio.play().catch(function() {
-            // Если браузер заблокировал, включаем при первом клике по экрану
             document.body.addEventListener('click', function() {
                 audio.play();
-            }, { once: true }); // Сработает только один раз
+            }, { once: true });
         });
     </script>
 
 </body>
-</html>
 </html>
