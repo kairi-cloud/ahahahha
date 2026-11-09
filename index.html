@@ -23,6 +23,9 @@
             animation: float 3s ease-in-out infinite;
         }
 
+        /* =========================================
+           АДАПТИВ ДЛЯ БЛОКА С КОТОМ (ТЕЛЕФОНЫ)
+           ========================================= */
         @media (max-width: 900px) {
             .top-nav { padding: 15px 10px !important; }
             .nav-pill {
@@ -37,6 +40,31 @@
             .hero {
                 background-position: 90% 80% !important;
                 background-size: 60% !important; 
+            }
+
+            /* ВОТ ТУТ МЫ ДЕЛАЕМ ТАК, ЧТОБЫ КОТ ПЕРЕНОСИЛСЯ ВНИЗ */
+            #about-section {
+                flex-direction: column !important; /* Ставим элементы друг под другом */
+                text-align: center;
+                gap: 40px !important;
+                padding: 40px 5% !important;
+            }
+
+            /* Текст и плашки на телефоне становятся по центру */
+            #about-section > div:first-child {
+                max-width: 100% !important;
+                align-items: center !important;
+            }
+            
+            /* Плашки на телефоне тоже центрируем */
+            #about-section .steps-container {
+                align-items: center !important;
+            }
+
+            /* Кот на телефоне занимает всю ширину и стоит по центру */
+            #about-section > div:last-child {
+                max-width: 100% !important;
+                justify-content: center !important;
             }
         }
     </style>
@@ -107,7 +135,8 @@
         </div>
     </div>
 
-    <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ СПРАВА) -->
+    <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ) -->
+    <!-- Убрал flex-wrap: wrap, чтобы они не переносились вниз, и уменьшил размеры плашек -->
     <section id="about-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; gap: 20px;">
         
         <!-- Левая часть: Текст и плашки -->
@@ -133,9 +162,8 @@
             </div>
         </div>
 
-        <!-- Правая часть: Гифка с котиком (с анимацией) -->
-        <div style="flex: 1; display: flex; justify-content: center; align-items: center; max-width: 45%;">
-            <!-- Добавлен класс floating-cat для анимации -->
+        <!-- Правая часть: Гифка с котиком -->
+        <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; max-width: 45%;">
             <img src="cat.gif" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px; border-radius: 20px;">
         </div>
 
