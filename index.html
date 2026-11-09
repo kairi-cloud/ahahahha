@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
     
-    <!-- ВСТРОЕННЫЕ СТИЛИ ДЛЯ МОБИЛЬНОГО МЕНЮ -->
+    <!-- ВСТРОЕННЫЕ СТИЛИ ДЛЯ МОБИЛЬНОГО МЕНЮ И ПЛАВНОЙ ПРОКРУТКИ -->
     <style>
+        /* Включаем плавную прокрутку для всей страницы */
+        html {
+            scroll-behavior: smooth;
+        }
+
         @media (max-width: 768px) {
             .top-nav { padding: 15px 10px !important; }
             .nav-pill {
@@ -33,15 +38,14 @@
     <!-- Верхнее меню -->
     <header class="top-nav">
         <div class="nav-pill" style="background-color: #9b30ff !important;">
-            <a href="#" style="color: #ffffff !important;">Регламент</a>
+            <!-- ВОТ ТУТ ССЫЛКА НА БЛОК ПРАВИЛ -->
+            <a href="#rules-section" style="color: #ffffff !important;">Регламент</a>
             <a href="#" style="color: #ffffff !important;">FAQ</a>
             <a href="https://tally.so/r/4aBl7b" target="_blank" style="color: #ffffff !important;">Регистрация</a>
         </div>
     </header>
 
-    <!-- ГЛАВНЫЙ БЛОК (УМЕНЬШЕН И СДВИНУТ ВПРАВО) -->
-    <!-- background-size: 53% - уменьшает картинку -->
-    <!-- background-position: 100% center - прижимает к самому правому краю -->
+    <!-- ГЛАВНЫЙ БЛОК -->
     <section class="hero" style="background-image: url('bg.png') !important; background-size: 53% !important; background-position: 100% center !important; background-repeat: no-repeat !important; background-color: #000 !important;">
         <div class="hero-container">
             <div class="hero-content">
@@ -135,7 +139,8 @@
     </div>
 
     <!-- Блок Наши правила -->
-    <section style="background-color: #e0e0e0; padding: 60px 5%; font-family: 'Montserrat', sans-serif; color: #000;">
+    <!-- ВОТ ТУТ ДОБАВЛЕН ID="RULES-SECTION" -->
+    <section id="rules-section" style="background-color: #e0e0e0; padding: 60px 5%; font-family: 'Montserrat', sans-serif; color: #000;">
         <h2 style="font-size: 42px; font-weight: 900; text-transform: uppercase; text-align: center; margin-bottom: 30px;">НАШИ ПРАВИЛА</h2>
 
         <div style="background-color: #9b30ff; padding: 20px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
