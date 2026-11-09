@@ -130,7 +130,7 @@ h1 {
 }
 
 /* =========================================
-   БЕГУЩАЯ СТРОКА
+   БЕГУЩАЯ СТРОКА (ОБЩИЕ СТИЛИ)
    ========================================= */
 .marquee {
     overflow: hidden;
@@ -140,7 +140,6 @@ h1 {
     align-items: center;
     position: relative;
     z-index: 10;
-    background-color: #9b30ff;
 }
 
 .marquee-content {
@@ -151,13 +150,45 @@ h1 {
     text-transform: uppercase;
 }
 
-.marquee-content span { color: #000; margin: 0 25px; }
-.marquee-content .arrow { font-size: 24px; font-weight: 700; }
+.marquee-content span { margin: 0 25px; }
 
 @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+
+/* =========================================
+   ПЕРВАЯ СТРОКА (Фиолетовая, с картами)
+   ========================================= */
+.marquee-purple {
+    background-color: #9b30ff;
+}
+
+.marquee-purple span { color: #000; }
+.marquee-purple .black { color: #000; }
+.marquee-purple .white { color: #fff; }
+.marquee-purple .star { color: #000; }
+
+
+/* =========================================
+   ВТОРАЯ СТРОКА (Черная, новые фразы)
+   ========================================= */
+.marquee-black {
+    background-color: #000; /* Черный фон */
+    border-top: 2px solid #9b30ff; /* Фиолетовая обводка сверху */
+    border-bottom: 2px solid #9b30ff; /* Фиолетовая обводка снизу */
+}
+
+/* Белый текст для второй строки */
+.marquee-black span { 
+    color: #fff !important; 
+}
+
+/* Белые звездочки */
+.marquee-black .star { 
+    color: #fff !important; 
+}
+
 
 /* =========================================
    БЛОК: КАК УЧАСТВОВАТЬ
@@ -173,7 +204,6 @@ h1 {
     font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 30px;
-    /* Убрали подчеркивание, оставили только желтую полоску */
     display: flex;
     align-items: center;
     gap: 15px;
@@ -186,14 +216,14 @@ h1 {
     display: inline-block;
     width: 8px;
     height: 40px;
-    background-color: #ccff00; /* Цвет полоски изменен на желто-зеленый */
+    background-color: #ccff00;
 }
 
 .steps-container {
     display: flex;
     flex-direction: column;
     gap: 15px; 
-    align-items: center; /* Выравниваем плашки по центру */
+    align-items: center; 
 }
 
 /* Желтые плашки */
@@ -218,7 +248,7 @@ h1 {
 }
 
 /* =========================================
-   БЛОК НАШИ ПРАВИЛА (ИСПРАВЛЕНО)
+   БЛОК НАШИ ПРАВИЛА
    ========================================= */
 .rules {
     background-color: #e0e0e0;
