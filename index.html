@@ -143,12 +143,16 @@
                     <p>Покажи свои навыки, сразись с сильнейшими и докажи, что ты лучший. Твой путь к победе начинается здесь!</p>
                 </div>
                 
-                <a href="https://tally.so/r/4aBl7b" target="_blank" class="btn-yellow" id="btn-main">РЕГИСТРАЦИЯ ТУТ</a>
+                <!-- Кнопка и плашка в одной колонке -->
+                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 25px;">
+                    <a href="https://tally.so/r/4aBl7b" target="_blank" class="btn-yellow" id="btn-main">РЕГИСТРАЦИЯ ТУТ</a>
 
-                <!-- НОВАЯ ПЛАШКА С МЕСТАМИ -->
-                <div style="margin-top: 25px; display: inline-block; background-color: transparent; border: 2px solid #9b30ff; padding: 10px 25px; border-radius: 30px; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 15px rgba(155, 48, 255, 0.4);">
-                    Осталось <span style="color: #ccff00;">20</span> мест
+                    <!-- ПЛАШКА С МЕСТАМИ -->
+                    <div style="background-color: transparent; border: 2px solid #9b30ff; padding: 12px 30px; border-radius: 30px; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 15px rgba(155, 48, 255, 0.4); display: inline-block;">
+                        Осталось <span style="color: #ccff00;">20</span> мест
+                    </div>
                 </div>
+
             </div>
             <div class="hero-image"></div>
         </div>
@@ -219,7 +223,6 @@
         </div>
 
         <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; max-width: 45%;">
-            <!-- ВАЖНО: ЗДЕСЬ ДОЛЖНО БЫТЬ ИМЯ ВАШЕГО ФАЙЛА -->
             <img src="cat.png" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
         </div>
 
@@ -312,10 +315,8 @@
         const playBtn = document.getElementById('play-pause-btn');
         const volumeControl = document.getElementById('volume-control');
 
-        // Устанавливаем начальную громкость (20%)
         audio.volume = 0.2;
 
-        // Функция кнопки Play/Pause
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
@@ -326,12 +327,10 @@
             }
         }
 
-        // Ползунок громкости
         volumeControl.addEventListener('input', function() {
             audio.volume = this.value;
         });
 
-        // Попытка автозапуска при клике в любом месте (обход блокировки)
         audio.play().then(() => {
             playBtn.innerHTML = "⏸";
         }).catch(function() {
