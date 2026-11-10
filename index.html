@@ -144,6 +144,11 @@
                 </div>
                 
                 <a href="https://tally.so/r/4aBl7b" target="_blank" class="btn-yellow" id="btn-main">РЕГИСТРАЦИЯ ТУТ</a>
+
+                <!-- НОВАЯ ПЛАШКА С МЕСТАМИ -->
+                <div style="margin-top: 25px; display: inline-block; background-color: transparent; border: 2px solid #9b30ff; padding: 10px 25px; border-radius: 30px; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 15px rgba(155, 48, 255, 0.4);">
+                    Осталось <span style="color: #ccff00;">20</span> мест
+                </div>
             </div>
             <div class="hero-image"></div>
         </div>
@@ -314,10 +319,10 @@
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
-                playBtn.innerHTML = "⏸"; // Меняем иконку на паузу
+                playBtn.innerHTML = "⏸";
             } else {
                 audio.pause();
-                playBtn.innerHTML = "▶"; // Меняем иконку на плей
+                playBtn.innerHTML = "▶";
             }
         }
 
