@@ -1,3 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESS CUP — Турнир</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- ВСТРОЕННЫЕ СТИЛИ -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-cat {
+            animation: float 3s ease-in-out infinite;
+            mix-blend-mode: multiply; 
+        }
+
+        /* Стили для плеера */
+        .player-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #9b30ff;
+            padding: 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            z-index: 9999;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .play-btn {
+            background-color: #ccff00;
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .play-btn:hover { transform: scale(1.1); }
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 8px;
+            background: #000;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #ccff00;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .volume-slider { width: 60px; }
+        }
+
+        @media (max-width: 900px) {
+            .top-nav { padding: 15px 10px !important; }
+            .nav-pill {
+                padding: 10px 15px !important;
+                gap: 15px !important;
+                width: 95% !important;
+                max-width: 400px !important;
+                justify-content: space-around !important;
+            }
+            .nav-pill a { font-size: 12px !important; letter-spacing: 0 !important; }
+            
+            .hero {
+                background-position: 90% 80% !important;
+                background-size: 60% !important; 
+            }
+
+            #about-section {
+                flex-direction: column !important;
+                text-align: center;
+                gap: 40px !important;
+                padding: 40px 5% !important;
+            }
+            #about-section > div:first-child {
+                max-width: 100% !important;
+                align-items: center !important;
+            }
+            #about-section .steps-container {
+                align-items: center !important;
+            }
+            #about-section > div:last-child {
+                max-width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- НЕВИДИМЫЙ АУДИОПЛЕЕР -->
+    <audio id="bg-music" loop autoplay style="display: none;">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ПЛЕЕР С РЕГУЛИРОВКОЙ ГРОМКОСТИ -->
+    <div class="player-container">
+        <button class="play-btn" id="play-pause-btn" onclick="toggleMusic()">▶</button>
+        <input type="range" id="volume-control" class="volume-slider" min="0" max="1" step="0.05" value="0.2">
+    </div>
+
+    <!-- Верхнее меню -->
+    <header class="top-nav">
+        <div class="nav-pill" style="background-color: #9b30ff !important;">
+            <a href="#rules-section" style="color: #ffffff !important;">Регламент</a>
+            <a href="#about-section" style="color: #ffffff !important;">FAQ</a>
+            <a href="https://tally.so/r/4aBl7b" target="_blank" style="color: #ffffff !important;">Регистрация</a>
+        </div>
+    </header>
+
     <!-- ГЛАВНЫЙ БЛОК -->
     <section class="hero" style="background-image: url('bg.png') !important; background-size: 53% !important; background-position: 100% 80% !important; background-repeat: no-repeat !important; background-color: #000 !important;">
         <div class="hero-container">
@@ -8,17 +143,206 @@
                     <p>Покажи свои навыки, сразись с сильнейшими и докажи, что ты лучший. Твой путь к победе начинается здесь!</p>
                 </div>
                 
-                <!-- Контейнер для кнопки и плашки -->
-                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px;">
-                    <a href="https://tally.so/r/4aBl7b" target="_blank" class="btn-yellow" id="btn-main">РЕГИСТРАЦИЯ ТУТ</a>
+                <a href="https://tally.so/r/4aBl7b" target="_blank" class="btn-yellow" id="btn-main">РЕГИСТРАЦИЯ ТУТ</a>
 
-                    <!-- ПЛАШКА С МЕСТАМИ -->
-                    <div style="background-color: transparent; border: 2px solid #9b30ff; padding: 10px 25px; border-radius: 30px; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 15px rgba(155, 48, 255, 0.4);">
-                        Осталось <span style="color: #ccff00;">20</span> мест
-                    </div>
+                <!-- НОВАЯ ПЛАШКА С МЕСТАМИ -->
+                <div style="margin-top: 25px; display: inline-block; background-color: transparent; border: 2px solid #9b30ff; padding: 10px 25px; border-radius: 30px; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 15px rgba(155, 48, 255, 0.4);">
+                    Осталось <span style="color: #ccff00;">20</span> мест
                 </div>
-
             </div>
             <div class="hero-image"></div>
         </div>
     </section>
+
+    <!-- БЕГУЩАЯ СТРОКА С КАРТАМИ -->
+    <div class="marquee marquee-purple">
+        <div class="marquee-content">
+            <span>РОТАЦИЯ КАРТ</span>
+            <span class="star">✦</span>
+            <span class="black">BIND</span>
+            <span class="star">✦</span>
+            <span class="white">CORRODE</span>
+            <span class="star">✦</span>
+            <span class="black">SUMMIT</span>
+            <span class="star">✦</span>
+            <span class="white">HAVEN</span>
+            <span class="star">✦</span>
+            <span class="black">SUNSET</span>
+            <span class="star">✦</span>
+            <span class="white">LOTUS</span>
+            <span class="star">✦</span>
+            <span class="black">ABYSS</span>
+            <span class="star">✦</span>
+            <!-- Дубликат -->
+            <span>РОТАЦИЯ КАРТ</span>
+            <span class="star">✦</span>
+            <span class="black">BIND</span>
+            <span class="star">✦</span>
+            <span class="white">CORRODE</span>
+            <span class="star">✦</span>
+            <span class="black">SUMMIT</span>
+            <span class="star">✦</span>
+            <span class="white">HAVEN</span>
+            <span class="star">✦</span>
+            <span class="black">SUNSET</span>
+            <span class="star">✦</span>
+            <span class="white">LOTUS</span>
+            <span class="star">✦</span>
+            <span class="black">ABYSS</span>
+            <span class="star">✦</span>
+        </div>
+    </div>
+
+    <!-- Блок "О ТУРНИРЕ" (С КОТИКОМ) -->
+    <section id="about-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%; background: linear-gradient(90deg, #9b30ff 0%, #e87eff 100%); padding: 60px 10%; gap: 20px;">
+        
+        <div style="flex: 1; max-width: 55%; display: flex; flex-direction: column; align-items: flex-start;">
+            <h2 style="color: #fff; font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; display: flex; align-items: center; gap: 15px;">
+                <span style="display: inline-block; width: 8px; height: 35px; background-color: #ccff00;"></span>
+                О ТУРНИРЕ. КАК УЧАСТВОВАТЬ?
+            </h2>
+            
+            <div class="steps-container" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 18px; font-weight: 900; text-transform: uppercase; padding: 12px 25px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">1.</span> ПЕРЕХОДИ ПО ССЫЛКЕ РЕГИСТРАЦИИ
+                </div>
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 18px; font-weight: 900; text-transform: uppercase; padding: 12px 25px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">2.</span> ЗАПОЛНЯЙ ФОРМУ
+                </div>
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 18px; font-weight: 900; text-transform: uppercase; padding: 12px 25px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">3.</span> ДОЖДИСЬ РАСПРЕДЕЛЕНИЯ В КОМАНДУ
+                </div>
+                <div class="step-pill" style="background-color: #ccff00; color: #000; font-size: 18px; font-weight: 900; text-transform: uppercase; padding: 12px 25px; border-radius: 40px; display: inline-block;">
+                    <span style="margin-right: 10px;">4.</span> ВЕСЕЛИСЬ И ПОБЕЖДАЙ
+                </div>
+            </div>
+        </div>
+
+        <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; max-width: 45%;">
+            <!-- ВАЖНО: ЗДЕСЬ ДОЛЖНО БЫТЬ ИМЯ ВАШЕГО ФАЙЛА -->
+            <img src="cat.png" alt="Котик" class="floating-cat" style="max-width: 100%; height: auto; max-height: 350px;">
+        </div>
+
+    </section>
+
+    <!-- БЕГУЩАЯ СТРОКА №2 -->
+    <div class="marquee marquee-black" style="background-color: #000 !important; border-top: 2px solid #9b30ff; border-bottom: 2px solid #9b30ff;">
+        <div class="marquee-content reverse" style="color: #fff !important;">
+            <span>ЭТО ТЕСТОВЫЙ ТУРНИР</span><span class="star" style="color: #fff !important;">✦</span>
+            <span>ВЕСЕЛИТЕСЬ, А НЕ ТОКСИЧЬТЕ</span><span class="star" style="color: #fff !important;">✦</span>
+            <span>НЕЗНАНИЕ ПРАВИЛ НЕ ОСВОБОЖДАЕТ ОТ ОТВЕТСТВЕННОСТИ</span><span class="star" style="color: #fff !important;">✦</span>
+            <span>Я НЕ ФЕМБОЙ</span><span class="star" style="color: #fff !important;">✦</span>
+            <!-- Дубликат -->
+            <span>ЭТО ТЕСТОВЫЙ ТУРНИР</span><span class="star" style="color: #fff !important;">✦</span>
+            <span>ВЕСЕЛИТЕСЬ, А НЕ ТОКСИЧЬТЕ</span><span class="star" style="color: #fff !important;">✦</span>
+            <span>НЕЗНАНИЕ ПРАВИЛ НЕ ОСВОБОЖДАЕТ ОТ ОТВЕТСТВЕННОСТИ</span><span class="star" style="color: #fff !important;">✦</span>
+            <span>Я НЕ ФЕМБОЙ</span><span class="star" style="color: #fff !important;">✦</span>
+        </div>
+    </div>
+
+    <!-- Блок Наши правила (С РАМКОЙ) -->
+    <section id="rules-section" style="background-color: #e0e0e0; padding: 60px 5%; font-family: 'Montserrat', sans-serif; color: #000;">
+        
+        <!-- РАМКА ВОКРУГ ЗАГОЛОВКА -->
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <h2 style="font-size: 42px; font-weight: 900; text-transform: uppercase; margin: 0; padding: 10px 40px; border: 4px solid #000; display: inline-block;">
+                НАШИ ПРАВИЛА
+            </h2>
+        </div>
+
+        <div style="background-color: #9b30ff; padding: 20px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <p style="color: #fff; font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0; max-width: 60%;">Полностью регламент можно прочитать в тг/комьюнити стак би</p>
+            <div style="display: flex; gap: 15px;">
+                <a href="https://stackb.net/c/dess_cup" target="_blank" style="background-color: #000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 0 10px rgba(255,255,255,0.2);">ТЫК! стак</a>
+                <a href="https://t.me/+cwaGk2woJXEzMDdi" target="_blank" style="background-color: #000; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 0 10px rgba(255,255,255,0.2);">ТЫК! тг</a>
+            </div>
+        </div>
+
+        <h3 style="font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px;">ИЗ ОСНОВНОГО:</h3>
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="background-color: #e0e0e0; border: 2px solid #000; border-radius: 10px; padding: 20px; box-shadow: 0 4px 0 #000;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                    <span style="display: inline-block; width: 25px; height: 25px; background-color: #9b30ff; border-radius: 50%; border: 2px solid #000;"></span>
+                    <h4 style="font-size: 22px; font-weight: 900; text-transform: uppercase; margin: 0;">ДОЛОЙ ТОКСИКОВ</h4>
+                </div>
+                <p style="font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0;">Важно помнить, что мы все играем в игру не ради ссор и унижений. Никто корову не проигрывает. Уважайте друг друга.</p>
+            </div>
+
+            <div style="background-color: #e0e0e0; border: 2px solid #000; border-radius: 10px; padding: 20px; box-shadow: 0 4px 0 #000;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                    <span style="display: inline-block; width: 25px; height: 25px; background-color: #9b30ff; border-radius: 50%; border: 2px solid #000;"></span>
+                    <h4 style="font-size: 22px; font-weight: 900; text-transform: uppercase; margin: 0;">ЧЕСТНАЯ ИГРА</h4>
+                </div>
+                <p style="font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0;">Чтобы не рушить вайб, то к участию не допускаются: различные читы, аим боты или "у меня парень иммо3 за меня сыграет, закерит". Будьте честны с собой и с другими.</p>
+            </div>
+
+            <div style="background-color: #e0e0e0; border: 2px solid #000; border-radius: 10px; padding: 20px; box-shadow: 0 4px 0 #000;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                    <span style="display: inline-block; width: 25px; height: 25px; background-color: #9b30ff; border-radius: 50%; border: 2px solid #000;"></span>
+                    <h4 style="font-size: 22px; font-weight: 900; text-transform: uppercase; margin: 0;">ХОРОШЕЕ НАСТРОЕНИЕ</h4>
+                </div>
+                <p style="font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0;">Знакомьтесь, веселитесь и играйте! Оставить депрессию.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок с предупреждением -->
+    <section style="background-color: #000; padding: 60px 5% 40px 5%; font-family: 'Montserrat', sans-serif; border-top: 8px solid #9b30ff; position: relative;">
+        
+        <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); background-color: #ccff00; color: #000; font-size: 32px; font-weight: 900; padding: 10px 40px; border-radius: 20px; box-shadow: 0 4px 0 #000; text-transform: uppercase;">
+            ВАЖНО!!
+        </div>
+
+        <p style="color: #ccff00; font-size: 18px; font-weight: 900; line-height: 1.5; margin-bottom: 20px; text-transform: uppercase;">
+            *При нарушениях регламента админы/организаторы имеют право вмешаться и вынести своё решение исходя из нарушений, прописанных в регламенте.
+        </p>
+        <p style="color: #ccff00; font-size: 18px; font-weight: 900; line-height: 1.5; margin: 0; text-transform: uppercase;">
+            *Если заметили неладное, то обращайтесь к админам/организаторам.
+        </p>
+    </section>
+
+    <!-- СКРИПТЫ -->
+    <script>
+        document.getElementById('btn-main').addEventListener('click', function(e) {
+            window.open('https://tally.so/r/4aBl7b', '_blank');
+        });
+
+        const audio = document.getElementById('bg-music');
+        const playBtn = document.getElementById('play-pause-btn');
+        const volumeControl = document.getElementById('volume-control');
+
+        // Устанавливаем начальную громкость (20%)
+        audio.volume = 0.2;
+
+        // Функция кнопки Play/Pause
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = "⏸";
+            } else {
+                audio.pause();
+                playBtn.innerHTML = "▶";
+            }
+        }
+
+        // Ползунок громкости
+        volumeControl.addEventListener('input', function() {
+            audio.volume = this.value;
+        });
+
+        // Попытка автозапуска при клике в любом месте (обход блокировки)
+        audio.play().then(() => {
+            playBtn.innerHTML = "⏸";
+        }).catch(function() {
+            document.body.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.innerHTML = "⏸";
+                }
+            }, { once: true });
+        });
+    </script>
+
+</body>
+</html>
